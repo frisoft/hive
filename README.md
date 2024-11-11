@@ -86,7 +86,7 @@ pg-start
 migration run
 server
 ```
-5. Stop SpotgreSQL
+5. Stop PostgreSQL
 ``` sh
 pg-stop
 ```
