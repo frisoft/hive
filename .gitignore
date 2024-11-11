@@ -24,5 +24,5 @@ engine/perf.data
 #vscode settings
 .vscode/
 
-# postgresql dev db
+# PostgreSQL dev DB
 .pg
