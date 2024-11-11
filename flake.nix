@@ -57,12 +57,6 @@
           pg_ctl -D "$PWD/.pg/data" -l "$PWD/.pg/postgresql.log" -o "-k $PWD/.pg/run" stop
           echo "Potgresql stopped"
         '')
-        # initdb -D .pg/data
-        # mkdir .pg/run
-        # chmod o+w .pg/run
-        # pg_ctl -D .pg/data -l .pg/postgresql.log -o "-k $PWD/.pg/run" start
-        # createuser -h localhost hive-dev && createdb -h localhost -O hive-dev hive-local
-        # pg_ctl -D .pg/data -l .pg/postgresql.log -o "-k $PWD/.pg/run" stop
         ];
       in
       with pkgs;
