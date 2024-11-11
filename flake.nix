@@ -40,6 +40,29 @@
           echo $(git diff --shortstat)
           echo "You are welcome! ٩( ๑╹ ꇴ╹)۶"
         '')
+        (pkgs.writeShellScriptBin "pg-start" ''
+          #!/usr/bin/env bash
+          if [ -d ".pg" ]; then
+            pg_ctl -D ".pg/data" -l ".pg/postgresql.log" -o "-k $PWD/.pg/run" start
+          else
+            initdb -D ".pg/data"
+            mkdir ".pg/run"
+            pg_ctl -D ".pg/data" -l ".pg/postgresql.log" -o "-k $PWD/.pg/run" start
+            createuser -h localhost hive-dev && createdb -h localhost -O hive-dev hive-local
+          fi
+          echo "Potgresql started (log: .pg/postgresql.log)"
+        '')
+        (pkgs.writeShellScriptBin "pg-stop" ''
+          #!/usr/bin/env bash
+          pg_ctl -D "$PWD/.pg/data" -l "$PWD/.pg/postgresql.log" -o "-k $PWD/.pg/run" stop
+          echo "Potgresql stopped"
+        '')
+        # initdb -D .pg/data
+        # mkdir .pg/run
+        # chmod o+w .pg/run
+        # pg_ctl -D .pg/data -l .pg/postgresql.log -o "-k $PWD/.pg/run" start
+        # createuser -h localhost hive-dev && createdb -h localhost -O hive-dev hive-local
+        # pg_ctl -D .pg/data -l .pg/postgresql.log -o "-k $PWD/.pg/run" stop
         ];
       in
       with pkgs;

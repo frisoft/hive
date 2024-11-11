@@ -23,3 +23,6 @@ engine/perf.data
 
 #vscode settings
 .vscode/
+
+# postgresql dev db
+.pg
