@@ -93,7 +93,9 @@
             echo "Welcome to hivegame.com"
             echo "'server' to start everything"
             echo "'format' to make the code look nice"
+            echo "'pg-start' to start PosgreSQL"
             echo "'migration' to 'run', 'revert', ... DB changes"
+            echo "'pg-stop' to stop PosgreSQL"
           '';
           LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath buildInputs;
         };
